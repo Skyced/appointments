@@ -1,0 +1,19 @@
+
+<div ng-controller="appointmentController as appointCtrl">
+<h1>New Appointment</h1>
+<a class="waves-effect waves-light btn" href="#/home">Home</a>
+<span ng-bind="appointCtrl.appointmentmsg"></span>
+<form>
+	<label for="date">Date</label>
+	<input type="date" id="date" name="date" ng-model="appointCtrl.newAppoint.date"
+       placeholder="yyyy-MM-dd" min="{{appointCtrl.currdate | date:'yyyy-MM-dd'}}" required />
+	<label for="time">Time</label>
+	<input type="time" id="time" name="time" min="08:00:00" max="17:00:00" required ng-model="appointCtrl.newAppoint.time"/>
+	<label for="complain">Complain</label>
+	<textarea ng-model="appointCtrl.newAppoint.complain"></textarea>
+	
+	<button>Cancel</button>
+	<input type="submit" value="Add Appointment" ng-click="appointCtrl.createAppointment()">
+</form>
+ 
+</div>

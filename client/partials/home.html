@@ -1,0 +1,22 @@
+<div ng-controller="appointmentController as appointCtrl">
+	<h1>Doctor's Appointments</h1>
+	<label for="search">Search</label><input type="text" ng-model="filter_name">
+	<a class="waves-effect waves-light btn" href="#/appointment">Add New Appointment</a>
+	<span ng-bind="appointCtrl.deletemsg"></span>
+	<table class="highlight">
+		<tr>
+			<th>Date</th>
+			<th>Time</th>
+			<th>Patient Name</th>
+			<th>Complain</th>
+			<th>Actions</th>
+		</tr>
+		<tr ng-repeat="appointment in appointCtrl.appointments | orderBy: ['date', 'time'] | filter:filter_name">
+			<td ng-bind="appointment.date | date:'MM-dd-yyyy'"></td>
+			<td ng-bind="appointment.time | date:'HH:mm a'"></td>
+			<td ng-bind="appointment.user"></td>
+			<td ng-bind="appointment.complain"></td>
+			<td><button ng-click="appointCtrl.destroyAppoint(appointment._id)">Cancel</button></td>
+		</tr>
+	</table>
+</div>

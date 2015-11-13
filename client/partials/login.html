@@ -1,0 +1,6 @@
+<div ng-controller="userController as userCtrl">
+	<h1>Login</h1>
+		<label for="name">Name:</label>
+		<input type="text" ng-model="userCtrl.newUser.name">
+		<input type="submit" value="Login" ng-click="userCtrl.createUser()">
+</div>

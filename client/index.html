@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Doctor's Appointment</title>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+  	<script>
+
+  	// var user = prompt("Login with username")
+  	var myApp = angular.module('myApp', ['ngRoute'])
+
+  	myApp.config(function ($routeProvider){
+  		$routeProvider
+  			.when('/appointment', {
+  				templateUrl: 'partials/appointments.html'
+  			})
+  			.when('/home', {
+  				templateUrl: 'partials/home.html'
+  			})
+  			.when('/login', {
+  				templateUrl: 'partials/login.html'
+  			})
+  			.when('/logout', {
+			resolve:{redirect: function(Session){
+				Session.clear();
+				return '/'
+				}}
+			})
+  	})
+  	</script>
+
+  	<!-- CONTROLLERS AND FACTORIES -->
+  	<script src="/js/factories/userfactory.js"></script>
+  	<script src="/js/factories/appointfactory.js"></script>
+  	<script src="/js/controllers/usercontroller.js"></script>
+  	<script src="/js/controllers/appointcontroller.js"></script>
+</head>
+<body>
+<a href="#/login">Login</a> | <a href="/">Logout</a>
+
+<div id="partial" ng-view="">
+</div>
+</body>
+</html>
+<style>
+#partial{
+	width: 90%;
+	margin-left:40px;
+}
+</style>
